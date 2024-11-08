@@ -1,60 +1,29 @@
 #include <stdio.h>
+#include <string.h>
+
+char reverse(char string[], int start, int end)	{
+	
+	if (start >= end)	{
+		return;
+	}
+	
+	char keep = string[start];
+	string[start] = string[end];
+	string[end]	= keep;
+	
+	reverse(string, start + 1, end - 1);
+}
 
 int main()	{
 	
-	int n;
+	char sentence[100];
 	
-	printf("Enter a number: ");
-	scanf("%d", &n);
+	printf("Enter a sentence: ");
+	fgets(sentence, 100, stdin);
 	
-	int charN = n + 2;
+	reverse(sentence, 0, strlen(sentence)-1);
 	
-	int newN = (2*n) + 1;
-	
-	int dots = n + 1;
-	int circles = 1;
-	
-	for (int i = 0; i < newN; i++)	{
-		
-
-		while (dots != 0)	{
-		
-			for (int dot = 0; dot < dots; dot++)	{
-				printf(". ");
-			}
-				
-			for (int circle = 0; circle < circles; circle++)	{
-				printf("o");
-			}
-					
-			dots--;	
-			circles++;
-			
-
-		printf("\n");
-		}
-		
-		while (circles != 0)	{
-			
-			circles--;
-			dots++;
-			
-			for (int dot = 0; dot < dots; dot++)	{
-				printf(". ");
-				
-			}
-			
-			for (int circle = 0; circle < circles; circle++)	{
-				printf("o");
-			}
-		printf("\n");
-	}
-	
-}
-	
-	
-	
-	
+	printf("%s", sentence);
 	
 	return 0;
 }
